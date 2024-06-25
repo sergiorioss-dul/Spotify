@@ -7,10 +7,10 @@ function App() {
         <div className='container'>
             <h1>myMusic</h1>
             <div className="row">
-                <div className="col">
+                <div className="col-2">
                     <Sidebar />
                 </div>
-                <div className="col">
+                <div className="col-10">
                     <ImageAccordion />
                 </div>
             </div>
