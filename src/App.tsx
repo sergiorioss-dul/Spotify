@@ -1,5 +1,6 @@
 import './App.css'
 import { ImageAccordion } from './components/ImageAccordion/ImageAccordion'
+import Sidebar from './components/Sidebar/Sidebar'
 
 function App() {
     return (
@@ -7,7 +8,7 @@ function App() {
             <h1>myMusic</h1>
             <div className="row">
                 <div className="col">
-                    <h1>myMusic</h1>
+                    <Sidebar />
                 </div>
                 <div className="col">
                     <ImageAccordion />
