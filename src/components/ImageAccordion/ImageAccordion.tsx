@@ -43,7 +43,7 @@ export const ImageAccordion = () => {
 
   return (
     <>
-      <div className="image-accordion-background"></div>
+      <div className="image-accordion-background" style={{ backgroundImage: `url(${items[active].image})` }}></div>
       <div className="image-accordion">
         {items.map((item, index) => {
           const isActive = active === index ? 'active' : '';
