@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import './styles.css';
-import image1 from './1.jpg';
-import image2 from './2.jpg';
-import image3 from './3.jpg';
-import image4 from './4.jpg';
-import image5 from './5.jpg';
+import image1 from './src/1.jpg';
+import image2 from './src/2.jpg';
+import image3 from './src/3.jpg';
+import image4 from './src/4.jpg';
+import image5 from './src/5.jpg';
 
 const items = [
   {
@@ -43,7 +43,7 @@ export const ImageAccordion = () => {
 
   return (
     <>
-      <div className="image-accordion-background" style={{ backgroundImage: `url(${items[active].image})` }}></div>
+      <div className="image-accordion-background"></div>
       <div className="image-accordion">
         {items.map((item, index) => {
           const isActive = active === index ? 'active' : '';
