@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: 74px;
+  width: 104px;
   background: gray;
   transition: width 0.4s;
   z-index: 2;
@@ -27,10 +27,15 @@
   background: rgb(0 0 0 / 25%);
 }
 
-.header img {
+.imgHeader {
   height: 24px;
   rotate: 180deg;
   margin-left: 14px;
+}
+
+.imgIcon {
+  border-radius: 50%;
+  height: 50px;
 }
 
 .header h1,
@@ -41,7 +46,7 @@
   translate: 0 -50%;
   opacity: 0;
   margin: 0;
-  font-size: 12px;
+  font-size: 15px;
   white-space: nowrap;
   transition: 0.175s;
 }
