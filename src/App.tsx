@@ -5,10 +5,8 @@ import Sidebar from './components/Sidebar/Sidebar'
 function App() {
     return (
         <div className='container'>
-            <div className="row">
-                <div className="col">
-                    <h1 className='mb-5 text-secondary'>myMusic</h1>
-                </div>
+            <div className='row position-absolute top-0 w-100 navColor z-2'>
+                <p>GREAT</p>
             </div>
             <div className="row">
                 <div className="col-2">
