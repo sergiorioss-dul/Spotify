@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import './styles.css'
 import { Link } from 'react-router-dom'
-import Menu from '../Menu/Menu'
-import { INav } from '../Menu/models'
+import Menu from '../Nav/Menu'
+import { INav } from '../Nav/models'
 
 const Sidebar = () => {
     const navLogin: INav[] = [
