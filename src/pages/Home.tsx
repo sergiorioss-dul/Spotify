@@ -4,21 +4,15 @@ import Layout from '../components/Layout/Layout'
 import { ScaleLoader } from 'react-spinners'
 
 const Home = () => {
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
         setTimeout(() => {
             setLoading(false)
-        }, 4000)
+        }, 1500)
     }, [])
 
-    return (
-        <Layout>
-            {
-                loading ? <ScaleLoader /> : <ImageAccordion />
-            }
-        </Layout>
-    )
+    return <Layout title="♡ Favorites">{loading ? <ScaleLoader /> : <ImageAccordion />}</Layout>
 }
 
 export default Home

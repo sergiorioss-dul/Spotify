@@ -1,8 +1,8 @@
-import Layout from "../components/Layout/Layout"
+import Layout from '../components/Layout/Layout'
 
 const Register = () => {
     return (
-        <Layout>
+        <Layout title="💾 Register">
             <h1>Register</h1>
         </Layout>
     )

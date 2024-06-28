@@ -1,8 +1,8 @@
-import Layout from "../components/Layout/Layout"
+import Layout from '../components/Layout/Layout'
 
 const Search = () => {
     return (
-        <Layout>
+        <Layout title="🔎 Search">
             <h1>Search</h1>
         </Layout>
     )

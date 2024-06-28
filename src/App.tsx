@@ -1,5 +1,5 @@
 import './App.css'
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Support from './pages/Support'
 import Login from './pages/Login'
@@ -8,8 +8,6 @@ import Search from './pages/Search'
 
 function App() {
     return (
-
-
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/support" element={<Support />} />
