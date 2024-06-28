@@ -6,7 +6,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     return (
         <div className='container'>
             <div className='row position-absolute top-0 w-100 navColor z-2'>
-                <p>GREAT</p>
+                <h1>Spotify</h1>
             </div>
             <div className="row">
                 <div className="col-2">

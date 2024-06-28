@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './styles.css'
+import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
     const [loggIn, setLoggin] = useState<boolean>(false)
@@ -8,12 +9,16 @@ const Sidebar = () => {
             <div className="header">
                 {
                     loggIn ? <><img className="imgHeader" src="./src/assets/spotify.png" /><h1 className='m-2'>Hi ! Firstname</h1></>
-                        : <><img className="imgHeader" src="./src/assets/spotify.png" />
+                        : <><Link to="/" ><img className="imgHeader" src="./src/assets/spotify.png" /></Link>
                             <h1>Welcome to myMusic</h1></>
                 }
             </div>
             {
                 loggIn ? <nav>
+                    <Link to="/">
+                        <i className="ai-heart"></i>
+                        <p>Favorites</p>
+                    </Link>
                     <a>
                         <i className="ai-search"></i>
                         <p>Search</p>
@@ -22,16 +27,20 @@ const Sidebar = () => {
                         <i className="ai-heart"></i>
                         <p>Favorite</p>
                     </a>
-                    <a>
+                    <Link to="/support">
                         <i className="ai-envelope"></i>
                         <p>Support</p>
-                    </a>
+                    </Link>
                     <a>
                         <i className="ai-gear"></i>
                         <p>Logout</p>
                     </a>
                 </nav> :
                     <nav>
+                        <Link to="/">
+                            <i className="ai-heart"></i>
+                            <p>Favorites</p>
+                        </Link>
                         <a>
                             <i className="ai-person"></i>
                             <p>Log in</p>
@@ -44,10 +53,10 @@ const Sidebar = () => {
                             <i className="ai-search"></i>
                             <p>Search</p>
                         </a>
-                        <a>
+                        <Link to="/support">
                             <i className="ai-envelope"></i>
                             <p>Support</p>
-                        </a>
+                        </Link>
                     </nav>
             }
 

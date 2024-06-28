@@ -1,12 +1,14 @@
 import './App.css'
-import { ImageAccordion } from './components/ImageAccordion/ImageAccordion'
-import Layout from './components/Layout/Layout'
+import { Routes, Route } from "react-router-dom"
+import Home from './pages/Home'
+import Support from './pages/Support'
 
 function App() {
     return (
-        <Layout>
-            <ImageAccordion />
-        </Layout>
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/support" element={<Support />} />
+        </Routes>
     )
 }
 
