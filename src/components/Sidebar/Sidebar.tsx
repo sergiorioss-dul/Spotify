@@ -7,14 +7,22 @@ const Sidebar = () => {
     return (
         <aside className="sidebar">
             <div className="header">
-                {
-                    loggIn ? <><img className="imgHeader" src="./src/assets/spotify.png" /><h1 className='m-2'>Hi ! Firstname</h1></>
-                        : <><Link to="/" ><img className="imgHeader" src="./src/assets/spotify.png" /></Link>
-                            <h1>Welcome to myMusic</h1></>
-                }
+                {loggIn ? (
+                    <>
+                        <img className="imgHeader" src="./src/assets/spotify.png" />
+                        <h1 className="m-2">Hi ! Firstname</h1>
+                    </>
+                ) : (
+                    <>
+                        <Link to="/">
+                            <img className="imgHeader" src="./src/assets/spotify.png" />
+                        </Link>
+                        <h1>Welcome to myMusic</h1>
+                    </>
+                )}
             </div>
-            {
-                loggIn ? <nav>
+            {loggIn ? (
+                <nav>
                     <Link to="/">
                         <i className="ai-heart"></i>
                         <p>Favorites</p>
@@ -33,33 +41,39 @@ const Sidebar = () => {
                     </Link>
                     <a>
                         <i className="ai-gear"></i>
+                        <button>
+                            <p>Logout</p>
+                        </button>
+                    </a>
+                    <a onClick={() => setLoggin(false)}>
+                        <i className="ai-gear"></i>
                         <p>Logout</p>
                     </a>
-                </nav> :
-                    <nav>
-                        <Link to="/">
-                            <i className="ai-heart"></i>
-                            <p>Favorites</p>
-                        </Link>
-                        <Link to="/login">
-                            <i className="ai-person"></i>
-                            <p>Log in</p>
-                        </Link>
-                        <Link to="/register">
-                            <i className="ai-save"></i>
-                            <p>Register</p>
-                        </Link>
-                        <Link to="/search">
-                            <i className="ai-search"></i>
-                            <p>Search</p>
-                        </Link>
-                        <Link to="/support">
-                            <i className="ai-envelope"></i>
-                            <p>Support</p>
-                        </Link>
-                    </nav>
-            }
-
+                </nav>
+            ) : (
+                <nav>
+                    <Link to="/">
+                        <i className="ai-heart"></i>
+                        <p>Favorites</p>
+                    </Link>
+                    <Link to="/login">
+                        <i className="ai-person"></i>
+                        <p>Log in</p>
+                    </Link>
+                    <Link to="/register">
+                        <i className="ai-save"></i>
+                        <p>Register</p>
+                    </Link>
+                    <Link to="/search">
+                        <i className="ai-search"></i>
+                        <p>Search</p>
+                    </Link>
+                    <Link to="/support">
+                        <i className="ai-envelope"></i>
+                        <p>Support</p>
+                    </Link>
+                </nav>
+            )}
         </aside>
     )
 }
