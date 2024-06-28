@@ -1,8 +1,54 @@
 import { useState } from 'react'
 import './styles.css'
 import { Link } from 'react-router-dom'
+import Menu from '../Menu/Menu'
+import { INav } from '../Menu/models'
 
 const Sidebar = () => {
+    const navLogin: INav[] = [
+        {
+            path: '/',
+            _class: 'ai-heart',
+            text: 'Favorites',
+        },
+        {
+            path: '/search',
+            _class: 'ai-search',
+            text: 'Search',
+        },
+        {
+            path: '/support',
+            _class: 'ai-envelope',
+            text: 'Favorites',
+        },
+    ]
+    const navGuest: INav[] = [
+        {
+            path: '/',
+            _class: 'ai-heart',
+            text: 'Favorites',
+        },
+        {
+            path: '/login',
+            _class: 'ai-person',
+            text: 'Login',
+        },
+        {
+            path: '/register',
+            _class: 'ai-save',
+            text: 'Register',
+        },
+        {
+            path: '/search',
+            _class: 'ai-search',
+            text: 'Search',
+        },
+        {
+            path: '/support',
+            _class: 'ai-envelope',
+            text: 'Support',
+        },
+    ]
     const [loggIn, setLoggin] = useState<boolean>(false)
     return (
         <aside className="sidebar">
@@ -21,59 +67,7 @@ const Sidebar = () => {
                     </>
                 )}
             </div>
-            {loggIn ? (
-                <nav>
-                    <Link to="/">
-                        <i className="ai-heart"></i>
-                        <p>Favorites</p>
-                    </Link>
-                    <a>
-                        <i className="ai-search"></i>
-                        <p>Search</p>
-                    </a>
-                    <a>
-                        <i className="ai-heart"></i>
-                        <p>Favorite</p>
-                    </a>
-                    <Link to="/support">
-                        <i className="ai-envelope"></i>
-                        <p>Support</p>
-                    </Link>
-                    <a>
-                        <i className="ai-gear"></i>
-                        <button>
-                            <p>Logout</p>
-                        </button>
-                    </a>
-                    <a onClick={() => setLoggin(false)}>
-                        <i className="ai-gear"></i>
-                        <p>Logout</p>
-                    </a>
-                </nav>
-            ) : (
-                <nav>
-                    <Link to="/">
-                        <i className="ai-heart"></i>
-                        <p>Favorites</p>
-                    </Link>
-                    <Link to="/login">
-                        <i className="ai-person"></i>
-                        <p>Log in</p>
-                    </Link>
-                    <Link to="/register">
-                        <i className="ai-save"></i>
-                        <p>Register</p>
-                    </Link>
-                    <Link to="/search">
-                        <i className="ai-search"></i>
-                        <p>Search</p>
-                    </Link>
-                    <Link to="/support">
-                        <i className="ai-envelope"></i>
-                        <p>Support</p>
-                    </Link>
-                </nav>
-            )}
+            {loggIn ? <Menu {...{ setLoggin, navLogin }} /> : <Menu navLogin={navGuest} />}
         </aside>
     )
 }
