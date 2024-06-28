@@ -41,18 +41,18 @@ const Sidebar = () => {
                             <i className="ai-heart"></i>
                             <p>Favorites</p>
                         </Link>
-                        <a>
+                        <Link to="/login">
                             <i className="ai-person"></i>
                             <p>Log in</p>
-                        </a>
-                        <a>
+                        </Link>
+                        <Link to="/register">
                             <i className="ai-save"></i>
                             <p>Register</p>
-                        </a>
-                        <a>
+                        </Link>
+                        <Link to="/search">
                             <i className="ai-search"></i>
                             <p>Search</p>
-                        </a>
+                        </Link>
                         <Link to="/support">
                             <i className="ai-envelope"></i>
                             <p>Support</p>
