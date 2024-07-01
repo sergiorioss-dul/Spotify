@@ -18,7 +18,7 @@ module.exports = {
     },
     plugins: ['react-refresh'],
     rules: {
-        quotes: ['error', 'double'],
+        quotes: ['error', 'single'],
         'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     },
 }
