@@ -11,16 +11,9 @@
         "format": "prettier --write --ignore-unknown ./src",
         "prepare": "husky"
     },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
     "lint-staged": {
-        "**/*.{ts,tsx,js,jsx}": [
-            "eslint --fix",
-            "prettier --write"
-        ]
+        "*.{ts,tsx,js}": "npm run lint",
+        "**/*": "npm run format"
     },
     "dependencies": {
         "eslint-config-prettier": "^9.1.0",
