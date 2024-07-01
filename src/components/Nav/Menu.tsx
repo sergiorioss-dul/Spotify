@@ -5,7 +5,7 @@ import { IMenu, INav } from './models'
 const Menu: FC<IMenu> = ({ setLoggin, navLogin }) => (
     <nav>
         {navLogin.map(({ path, _class, text }: INav) => (
-            <Nav {...{ path, _class, text }} />
+            <Nav key={path} {...{ path, _class, text }} />
         ))}
         {setLoggin && (
             <a onClick={() => setLoggin(false)}>

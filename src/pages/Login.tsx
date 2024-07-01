@@ -1,6 +1,8 @@
 import Layout from '../components/Layout/Layout'
+import { useUser } from '../hooks/useUser'
 
 const Login = () => {
+    const { handlerLogin } = useUser()
     return (
         <Layout title="👤 Login">
             <div className="flex justify-center mt-5">
@@ -23,8 +25,9 @@ const Login = () => {
                         <button
                             type="button"
                             className="btn btn-outline-dark btn-lg"
-                            data-mdb-ripple-init
-                            data-mdb-ripple-color="dark"
+                            onClick={() =>
+                                handlerLogin({ email: 'dul@gmail.com', password: 'testing' })
+                            }
                         >
                             Log in
                         </button>
