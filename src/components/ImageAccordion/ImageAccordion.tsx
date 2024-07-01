@@ -37,9 +37,9 @@ const items = [
 ]
 
 export const ImageAccordion = () => {
-    const [active, setActive] = useState(0)
+    const [active, setActive] = useState<number>(0)
 
-    const handleToggle = (index) => setActive(index)
+    const handleToggle = (index: number) => setActive(index)
 
     return (
         <>

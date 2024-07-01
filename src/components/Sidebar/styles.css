@@ -89,3 +89,11 @@
     background: rgb(0 0 0 / 20%);
     opacity: 1;
 }
+
+.backgroundInput {
+    background-color: darkgray;
+}
+
+.backgroundInput:hover {
+    background-color: darkgray;
+}
