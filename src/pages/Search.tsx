@@ -1,14 +1,24 @@
+import { useState } from 'react'
 import Layout from '../components/Layout/Layout'
 import { useUser } from '../hooks/useUser'
+import { Tracks } from './models'
+import List from '../components/List/List'
 
-type GenericObject = Record<string, unknown>
+interface IEvent {
+    keyCode: string | number
+    target: {
+        value: string
+    }
+}
 
 const Search = () => {
+    const [tracks, setUseTracks] = useState<Tracks | void>()
     const { searchSong } = useUser()
 
-    const _searchSong = (e: GenericObject) => {
-        if (e.keyCode === 'Enter' || e.keyCode === 13) {
-            searchSong(e.target.value)
+    const _searchSong = async (event: IEvent) => {
+        if (event.keyCode === 'Enter' || event.keyCode === 13) {
+            const result = await searchSong(event.target.value)
+            setUseTracks(result)
         }
     }
     return (
@@ -24,6 +34,7 @@ const Search = () => {
                     onKeyDown={_searchSong}
                 />
             </div>
+            {tracks !== undefined && <List {...{ tracks }} />}
         </Layout>
     )
 }

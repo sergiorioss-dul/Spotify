@@ -2,12 +2,15 @@ import { useReducer } from 'react'
 import { userReducer } from './userReducer'
 import { UserContext } from './UserContext'
 import { IUser, IUserLogin } from './models'
+import apiMusic from '../config/apiMusic'
+import { IMusic } from '../pages/models'
 
 const INITIAL_STATE = {
     name: '',
     password: '',
     email: '',
     favSongs: [],
+    searchSongs: [],
 }
 
 interface props {
@@ -31,11 +34,18 @@ export const UserProvider = ({ children }: props) => {
         })
     }
 
-    const searchSong = (word: string) => {
-        dispatch({
-            payload: word,
-            type: 'searchSong',
+    const searchSong = async (word: string): Promise<IMusic> => {
+        const response = await apiMusic({
+            method: 'GET',
+            url: `/search?q=${word}&type=track`,
         })
+            .then(({ data }) => {
+                return data
+            })
+            .catch((e) => {
+                console.log(e)
+            })
+        return response
     }
 
     return (

@@ -6,7 +6,7 @@ type UserAction =
     | { type: 'loginUser'; payload: IUserLogin }
     | { type: 'searchSong'; payload: string }
 
-export const userReducer = (state: IUser, action: UserAction) => {
+export const userReducer = (state: IUser, action: UserAction): IUser => {
     switch (action.type) {
         case 'registerUser':
             console.log('creating user...')
@@ -16,9 +16,6 @@ export const userReducer = (state: IUser, action: UserAction) => {
             return state
         case 'loginUser':
             console.log('loggin user...')
-            return state
-        case 'searchSong':
-            console.log('search song...', action.payload)
             return state
         default:
             return state
