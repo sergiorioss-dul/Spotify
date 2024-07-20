@@ -30,7 +30,7 @@ export interface Item {
     is_local: boolean
     name: string
     popularity: number
-    preview_url: null | string
+    preview_url: string
     track_number: number
     type: ItemType
     uri: string
