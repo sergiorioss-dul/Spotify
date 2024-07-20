@@ -1,5 +1,5 @@
 {
-    "name": "husky-cinemark",
+    "name": "mymusic",
     "private": true,
     "version": "0.0.0",
     "type": "module",
@@ -16,6 +16,10 @@
         "**/*": "npm run format"
     },
     "dependencies": {
+        "@emotion/react": "^11.12.0",
+        "@emotion/styled": "^11.12.0",
+        "@mui/icons-material": "^5.16.4",
+        "@mui/material": "^5.16.4",
         "axios": "^1.7.2",
         "eslint-config-prettier": "^9.1.0",
         "react": "^18.2.0",

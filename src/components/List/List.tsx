@@ -1,8 +1,13 @@
+import { useState } from 'react'
 import ReactAudioPlayer from 'react-audio-player'
 import { Item, MusicProps } from '../../pages/models'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import { ToggleButton } from '@mui/material'
 import './styles.css'
 
 const List = ({ tracks: { tracks } }: MusicProps) => {
+    const [selected, setSelected] = useState(false)
     console.log('tracks', tracks)
     return (
         <div className="overflow-scroll position-relative cardsContainer">
@@ -31,7 +36,25 @@ const List = ({ tracks: { tracks } }: MusicProps) => {
                                         </a>
                                     </h5>
                                     <p className="card-text">{artists[0].name}</p>
-                                    <ReactAudioPlayer src={preview_url} controls />
+                                    <div className="justify-content-center d-flex">
+                                        <ReactAudioPlayer src={preview_url} controls />
+                                        <div className="p-2 mb-1">
+                                            <ToggleButton
+                                                className="border-0"
+                                                value="check"
+                                                selected={selected}
+                                                onChange={() => {
+                                                    setSelected(!selected)
+                                                }}
+                                            >
+                                                {selected ? (
+                                                    <FavoriteIcon />
+                                                ) : (
+                                                    <FavoriteBorderIcon />
+                                                )}
+                                            </ToggleButton>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
