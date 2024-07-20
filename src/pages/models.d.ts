@@ -1,3 +1,7 @@
+export interface MusicProps {
+    tracks: IMusic
+}
+
 export interface IMusic {
     tracks: Tracks
 }

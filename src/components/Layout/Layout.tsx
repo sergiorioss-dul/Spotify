@@ -12,7 +12,7 @@ const Layout: FC<LayoutProps> = ({ title, children }) => {
                 <div className="col-2">
                     <Sidebar />
                 </div>
-                <div className="col-10">{children}</div>
+                <div className="col-11">{children}</div>
             </div>
         </div>
     )
