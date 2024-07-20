@@ -8,20 +8,19 @@ import './styles.css'
 
 const List = ({ tracks: { tracks } }: MusicProps) => {
     const [selected, setSelected] = useState(false)
-    console.log('tracks', tracks)
     return (
         <div className="overflow-scroll position-relative cardsContainer">
-            {tracks.items.map(({ album, artists, name, preview_url }: Item) => {
+            {tracks.items.map(({ album, artists, name, preview_url, id }: Item) => {
                 if (!preview_url) return
 
                 return (
-                    <div className="card cardBackground">
+                    <div className="card cardBackground" key={id}>
                         <div className="row g-0">
                             <div className="col-sm-4">
                                 <img
                                     src={album.images[0].url}
                                     className="h-100 card-img"
-                                    alt="..."
+                                    alt={album.name}
                                 />
                             </div>
                             <div className="col-sm-8">

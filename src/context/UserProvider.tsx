@@ -4,6 +4,7 @@ import { UserContext } from './UserContext'
 import { IUser, IUserLogin } from './models'
 import apiMusic from '../config/apiMusic'
 import { IMusic } from '../pages/models'
+import { reloadToken } from '../hooks/useApi'
 
 const INITIAL_STATE = {
     name: '',
@@ -21,19 +22,6 @@ export const UserProvider = ({ children }: props) => {
     const [userState, dispatch] = useReducer(userReducer, INITIAL_STATE)
 
     useEffect(() => {
-        console.log('initial')
-        const reloadToken = async () => {
-            const accessToken = localStorage.getItem('accessToken')
-            const r = await fetch('https://api.spotify.com/v1/me', {
-                headers: {
-                    Authorization: 'Bearer ' + accessToken,
-                },
-            })
-            const { error } = await r.json()
-            if (error.message === 'The access token expired') {
-                console.log('The token is expired')
-            }
-        }
         reloadToken()
     }, [])
 
