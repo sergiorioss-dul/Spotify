@@ -34,6 +34,7 @@ export interface Item {
     track_number: number
     type: ItemType
     uri: string
+    selected?: boolean
 }
 
 export interface Album {

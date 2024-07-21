@@ -8,9 +8,22 @@ import './styles.css'
 
 const List = ({ tracks: { tracks } }: MusicProps) => {
     const [selected, setSelected] = useState(false)
+    const [listTracks, setListTrack] = useState(tracks)
+    const toogleFav = (track: Item) => {
+        setSelected(!selected)
+        if (track.selected) {
+            track.selected = false
+        } else {
+            track.selected = true
+        }
+        const foundIndex = listTracks.items.findIndex((x) => x.id == track.id)
+        listTracks.items[foundIndex] = track
+        setListTrack(listTracks)
+    }
     return (
         <div className="overflow-scroll position-relative cardsContainer">
-            {tracks.items.map(({ album, artists, name, preview_url, id }: Item) => {
+            {listTracks.items.map((track: Item) => {
+                const { album, artists, name, preview_url, id } = track
                 if (!preview_url) return
 
                 return (
@@ -43,10 +56,10 @@ const List = ({ tracks: { tracks } }: MusicProps) => {
                                                 value="check"
                                                 selected={selected}
                                                 onChange={() => {
-                                                    setSelected(!selected)
+                                                    toogleFav(track)
                                                 }}
                                             >
-                                                {selected ? (
+                                                {track.selected ? (
                                                     <FavoriteIcon />
                                                 ) : (
                                                     <FavoriteBorderIcon />
