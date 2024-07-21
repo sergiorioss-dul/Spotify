@@ -1,64 +1,33 @@
-import { useState } from 'react'
+import { FC, useState } from 'react'
 import './styles.css'
-import image1 from './src/1.jpg'
-import image2 from './src/2.jpg'
-import image3 from './src/3.jpg'
-import image4 from './src/4.jpg'
-import image5 from './src/5.jpg'
+import { IAccordion } from './models'
 
-const items = [
-    {
-        header: 'Canada',
-        image: image2,
-        text: 'Image description',
-    },
-
-    {
-        header: 'New Zealand',
-        image: image1,
-        text: 'Image description',
-    },
-
-    {
-        header: 'Indonesia',
-        image: image4,
-        text: 'Image description',
-    },
-    {
-        header: 'South Africa',
-        image: image5,
-        text: 'Image description',
-    },
-    {
-        header: 'Spain',
-        image: image3,
-        text: 'Image description',
-    },
-]
-
-export const ImageAccordion = () => {
+export const ImageAccordion: FC<IAccordion> = (props) => {
     const [active, setActive] = useState<number>(0)
-
+    console.log(props)
+    const { favTracks } = props
+    if (!favTracks) return
+    console.log(favTracks)
     const handleToggle = (index: number) => setActive(index)
 
     return (
         <>
             <div className="image-accordion-background"></div>
             <div className="image-accordion">
-                {items.map((item, index) => {
+                {favTracks.map((item, index) => {
                     const isActive = active === index ? 'active' : ''
                     return (
                         <div
-                            key={item.image}
+                            key={item.id}
                             className={`image-accordion-item ${isActive}`}
                             onClick={() => handleToggle(index)}
                         >
-                            <img src={item.image} />
+                            <img src={item.album.images[0].url} />
                             <div className="content">
-                                <span className="material-symbols-outlined">photo_camera</span>
+                                <span className="material-symbols-outlined">{item.album.name}</span>
                                 <div>
-                                    <h2>{item.header}</h2>
-                                    <p>{item.text}</p>
+                                    <h2>{item.name}</h2>
+                                    <p>{item.artists[0].name}</p>
                                 </div>
                             </div>
                         </div>

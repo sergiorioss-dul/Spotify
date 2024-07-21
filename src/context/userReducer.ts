@@ -1,22 +1,18 @@
-import { ISong, IUser, IUserLogin } from './models'
+import { Item } from '../pages/models'
+import { IUser } from './models'
 
-type UserAction =
-    | { type: 'registerUser'; payload: IUser }
-    | { type: 'addSong'; payload: ISong }
-    | { type: 'loginUser'; payload: IUserLogin }
-    | { type: 'searchSong'; payload: string }
+type UserAction = { type: 'addTrack'; payload: Item } | { type: 'removeTrack'; payload: string }
 
 export const userReducer = (state: IUser, action: UserAction): IUser => {
     switch (action.type) {
-        case 'registerUser':
-            console.log('creating user...')
+        case 'addTrack':
+            console.log('adding song...', action.payload)
+            state.favTracks?.push(action.payload)
             return state
-        case 'addSong':
-            console.log('adding song...')
+        case 'removeTrack':
+            console.log('removing song...', action.payload)
             return state
-        case 'loginUser':
-            console.log('loggin user...')
-            return state
+
         default:
             return state
     }

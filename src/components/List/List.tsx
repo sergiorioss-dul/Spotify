@@ -1,19 +1,25 @@
-import { useState } from 'react'
+import { FC, useState } from 'react'
 import ReactAudioPlayer from 'react-audio-player'
 import { Item, MusicProps } from '../../pages/models'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import { ToggleButton } from '@mui/material'
 import './styles.css'
+import { useUser } from '../../hooks/useUser'
 
-const List = ({ tracks: { tracks } }: MusicProps) => {
+const List: FC<MusicProps> = ({ tracks: { tracks } }) => {
     const [selected, setSelected] = useState(false)
     const [listTracks, setListTrack] = useState(tracks)
+
+    const { addTrack, removeTrack } = useUser()
+
     const toogleFav = (track: Item) => {
         setSelected(!selected)
         if (track.selected) {
             track.selected = false
+            removeTrack(track.id)
         } else {
+            addTrack(track)
             track.selected = true
         }
         const foundIndex = listTracks.items.findIndex((x) => x.id == track.id)

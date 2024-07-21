@@ -1,17 +1,15 @@
 import { useEffect, useReducer } from 'react'
 import { userReducer } from './userReducer'
 import { UserContext } from './UserContext'
-import { IUser, IUserLogin } from './models'
 import apiMusic from '../config/apiMusic'
-import { IMusic } from '../pages/models'
+import { IMusic, Item } from '../pages/models'
 import { reloadToken } from '../hooks/useApi'
 
 const INITIAL_STATE = {
     name: '',
     password: '',
     email: '',
-    favSongs: [],
-    searchSongs: [],
+    favTracks: [],
 }
 
 interface props {
@@ -25,17 +23,17 @@ export const UserProvider = ({ children }: props) => {
         reloadToken()
     }, [])
 
-    const handlerLogin = (user: IUserLogin) => {
+    const addTrack = (track: Item) => {
         dispatch({
-            payload: user,
-            type: 'loginUser',
+            payload: track,
+            type: 'addTrack',
         })
     }
 
-    const handlerRegister = (user: IUser) => {
+    const removeTrack = (id: string) => {
         dispatch({
-            payload: user,
-            type: 'registerUser',
+            payload: id,
+            type: 'removeTrack',
         })
     }
 
@@ -58,8 +56,8 @@ export const UserProvider = ({ children }: props) => {
             value={{
                 userState,
                 searchSong,
-                handlerLogin,
-                handlerRegister,
+                addTrack,
+                removeTrack,
             }}
         >
             {children}

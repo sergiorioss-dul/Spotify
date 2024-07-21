@@ -2,10 +2,11 @@ import { useContext } from 'react'
 import { UserContext } from '../context/UserContext'
 
 export const useUser = () => {
-    const { handlerLogin, handlerRegister, searchSong } = useContext(UserContext)
+    const { searchSong, addTrack, removeTrack, userState } = useContext(UserContext)
     return {
+        addTrack,
+        userState,
         searchSong,
-        handlerLogin,
-        handlerRegister,
+        removeTrack,
     }
 }

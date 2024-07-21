@@ -17,10 +17,12 @@ const Search = () => {
 
     const _searchSong = async (event: IEvent) => {
         if (event.keyCode === 'Enter' || event.keyCode === 13) {
+            console.log('executed')
             const result = await searchSong(event.target.value)
             setUseTracks(result)
         }
     }
+
     return (
         <Layout title="🔎 Search">
             <div
@@ -34,7 +36,7 @@ const Search = () => {
                     onKeyDown={_searchSong}
                 />
             </div>
-            {tracks !== undefined && <List {...{ tracks }} />}
+            {tracks !== undefined && <List tracks={tracks} />}
         </Layout>
     )
 }
