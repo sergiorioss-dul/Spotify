@@ -6,13 +6,15 @@ type UserAction = { type: 'addTrack'; payload: Item } | { type: 'removeTrack'; p
 export const userReducer = (state: IUser, action: UserAction): IUser => {
     switch (action.type) {
         case 'addTrack':
-            console.log('adding song...', action.payload)
             state.favTracks?.push(action.payload)
+            localStorage.setItem('favTracks', JSON.stringify(state.favTracks))
             return state
-        case 'removeTrack':
-            console.log('removing song...', action.payload)
+        case 'removeTrack': {
+            const tracks = state.favTracks?.filter((t) => t.id !== action.payload)
+            state.favTracks = tracks
+            localStorage.setItem('favTracks', JSON.stringify(state.favTracks))
             return state
-
+        }
         default:
             return state
     }

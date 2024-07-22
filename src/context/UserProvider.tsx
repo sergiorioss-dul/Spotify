@@ -9,7 +9,7 @@ const INITIAL_STATE = {
     name: '',
     password: '',
     email: '',
-    favTracks: [],
+    favTracks: JSON.parse(localStorage.getItem('favTracks') ?? '[]'),
 }
 
 interface props {

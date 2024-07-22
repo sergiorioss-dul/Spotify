@@ -7,7 +7,6 @@ import { useUser } from '../hooks/useUser'
 const Home = () => {
     const [loading, setLoading] = useState<boolean>(true)
     const { userState } = useUser()
-    console.log(userState)
 
     useEffect(() => {
         setTimeout(() => {

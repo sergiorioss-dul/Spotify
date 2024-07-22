@@ -11,7 +11,6 @@ export const createToken = async () => {
         },
     })
         .then(({ data: { access_token } }) => {
-            console.log('creating token', access_token)
             localStorage.setItem('accessToken', access_token)
         })
         .catch((e) => {
@@ -27,13 +26,11 @@ export const reloadToken = async () => {
                 Authorization: 'Bearer ' + accessToken,
             },
         })
-        .then((data) => {
-            console.log(data)
+        .then(() => {
             return
         })
         .catch((e) => {
             if (e.response.data.error.message === 'The access token expired') {
-                console.log('Eliminar token')
                 localStorage.removeItem('accessToken')
                 createToken()
             }

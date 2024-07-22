@@ -36,7 +36,7 @@ const Search = () => {
                     onKeyDown={_searchSong}
                 />
             </div>
-            {tracks !== undefined && <List tracks={tracks} />}
+            {tracks !== undefined && <List list={tracks} />}
         </Layout>
     )
 }

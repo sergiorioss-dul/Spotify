@@ -1,5 +1,5 @@
 export interface MusicProps {
-    tracks: IMusic
+    list: IMusic
 }
 
 export interface IMusic {

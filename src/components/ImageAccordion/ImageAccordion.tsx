@@ -5,10 +5,8 @@ import ReactAudioPlayer from 'react-audio-player'
 
 export const ImageAccordion: FC<IAccordion> = (props) => {
     const [active, setActive] = useState<number>(0)
-    console.log(props)
     const { favTracks } = props
     if (!favTracks) return
-    console.log(favTracks)
     const handleToggle = (index: number) => setActive(index)
 
     return (

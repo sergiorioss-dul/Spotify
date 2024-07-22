@@ -7,7 +7,10 @@ import { ToggleButton } from '@mui/material'
 import './styles.css'
 import { useUser } from '../../hooks/useUser'
 
-const List: FC<MusicProps> = ({ tracks: { tracks } }) => {
+const List: FC<MusicProps> = (props) => {
+    const {
+        list: { tracks },
+    } = props
     const [selected, setSelected] = useState(false)
     const [listTracks, setListTrack] = useState(tracks)
 
