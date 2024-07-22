@@ -17,7 +17,7 @@ const Search = () => {
 
     const _searchSong = async (event: IEvent) => {
         if (event.keyCode === 'Enter' || event.keyCode === 13) {
-            console.log('executed')
+            setUseTracks()
             const result = await searchSong(event.target.value)
             setUseTracks(result)
         }

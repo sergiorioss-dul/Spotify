@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
 import './styles.css'
 import { IAccordion } from './models'
+import ReactAudioPlayer from 'react-audio-player'
 
 export const ImageAccordion: FC<IAccordion> = (props) => {
     const [active, setActive] = useState<number>(0)
@@ -28,6 +29,7 @@ export const ImageAccordion: FC<IAccordion> = (props) => {
                                 <div>
                                     <h2>{item.name}</h2>
                                     <p>{item.artists[0].name}</p>
+                                    <ReactAudioPlayer src={item.preview_url} controls />
                                 </div>
                             </div>
                         </div>
