@@ -1,37 +1,19 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import ReactAudioPlayer from 'react-audio-player'
 import { Item, MusicProps } from '../../pages/models'
-import FavoriteIcon from '@mui/icons-material/Favorite'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
-import { ToggleButton } from '@mui/material'
 import './styles.css'
-import { useUser } from '../../hooks/useUser'
+import FavButton from '../FavButton/FavButton'
 
 const List: FC<MusicProps> = (props) => {
     const {
         list: { tracks },
+        _toggleFav,
+        selected,
     } = props
-    const [selected, setSelected] = useState(false)
-    const [listTracks, setListTrack] = useState(tracks)
 
-    const { addTrack, removeTrack } = useUser()
-
-    const toogleFav = (track: Item) => {
-        setSelected(!selected)
-        if (track.selected) {
-            track.selected = false
-            removeTrack(track.id)
-        } else {
-            addTrack(track)
-            track.selected = true
-        }
-        const foundIndex = listTracks.items.findIndex((x) => x.id == track.id)
-        listTracks.items[foundIndex] = track
-        setListTrack(listTracks)
-    }
     return (
         <div className="overflow-scroll position-relative cardsContainer">
-            {listTracks.items.map((track: Item) => {
+            {tracks.items.map((track: Item) => {
                 const { album, artists, name, preview_url, id } = track
                 if (!preview_url) return
 
@@ -60,20 +42,7 @@ const List: FC<MusicProps> = (props) => {
                                     <div className="justify-content-center d-flex">
                                         <ReactAudioPlayer src={preview_url} controls />
                                         <div className="p-2 mb-1">
-                                            <ToggleButton
-                                                className="border-0"
-                                                value="check"
-                                                selected={selected}
-                                                onChange={() => {
-                                                    toogleFav(track)
-                                                }}
-                                            >
-                                                {track.selected ? (
-                                                    <FavoriteIcon />
-                                                ) : (
-                                                    <FavoriteBorderIcon />
-                                                )}
-                                            </ToggleButton>
+                                            <FavButton {...{ selected, _toggleFav, track }} />
                                         </div>
                                     </div>
                                 </div>

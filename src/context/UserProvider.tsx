@@ -1,8 +1,8 @@
-import { useEffect, useReducer } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 import { userReducer } from './userReducer'
 import { UserContext } from './UserContext'
 import apiMusic from '../config/apiMusic'
-import { IMusic, Item } from '../pages/models'
+import { IMusic, Item, Tracks } from '../pages/models'
 import { reloadToken } from '../hooks/useApi'
 
 const INITIAL_STATE = {
@@ -17,7 +17,10 @@ interface props {
 }
 
 export const UserProvider = ({ children }: props) => {
+    const [tracks, setUseTracks] = useState<Tracks | void>()
     const [userState, dispatch] = useReducer(userReducer, INITIAL_STATE)
+    const [listTracks, setListTrack] = useState(tracks)
+    const [selected, setSelected] = useState(false)
 
     useEffect(() => {
         reloadToken()
@@ -51,6 +54,22 @@ export const UserProvider = ({ children }: props) => {
         return response
     }
 
+    const _toggleFav = (track: Item) => {
+        setSelected(!selected)
+        if (track.selected) {
+            track.selected = false
+            removeTrack(track.id)
+        } else {
+            addTrack(track)
+            track.selected = true
+        }
+        if (listTracks) {
+            const foundIndex = listTracks.items.findIndex((x) => x.id == track.id)
+            listTracks.items[foundIndex] = track
+            setListTrack(listTracks)
+        }
+    }
+
     return (
         <UserContext.Provider
             value={{
@@ -58,6 +77,10 @@ export const UserProvider = ({ children }: props) => {
                 searchSong,
                 addTrack,
                 removeTrack,
+                _toggleFav,
+                setUseTracks,
+                tracks,
+                selected,
             }}
         >
             {children}

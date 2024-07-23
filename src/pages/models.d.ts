@@ -1,5 +1,7 @@
 export interface MusicProps {
     list: IMusic
+    _toggleFav: (track) => void
+    selected: true
 }
 
 export interface IMusic {

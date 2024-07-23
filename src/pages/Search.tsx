@@ -1,7 +1,5 @@
-import { useState } from 'react'
 import Layout from '../components/Layout/Layout'
 import { useUser } from '../hooks/useUser'
-import { Tracks } from './models'
 import List from '../components/List/List'
 
 interface IEvent {
@@ -12,8 +10,7 @@ interface IEvent {
 }
 
 const Search = () => {
-    const [tracks, setUseTracks] = useState<Tracks | void>()
-    const { searchSong } = useUser()
+    const { searchSong, setUseTracks, tracks, _toggleFav } = useUser()
 
     const _searchSong = async (event: IEvent) => {
         if (event.keyCode === 'Enter' || event.keyCode === 13) {
@@ -36,7 +33,7 @@ const Search = () => {
                     onKeyDown={_searchSong}
                 />
             </div>
-            {tracks !== undefined && <List list={tracks} />}
+            {tracks !== undefined && <List list={tracks} _toggleFav={_toggleFav} selected />}
         </Layout>
     )
 }
