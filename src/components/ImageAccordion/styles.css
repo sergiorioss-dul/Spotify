@@ -16,6 +16,7 @@
 }
 
 .image-accordion {
+    margin-left: 10%;
     position: relative;
     z-index: 2;
     display: flex;

@@ -32,7 +32,11 @@ export const ImageAccordion: FC<IAccordion> = (props) => {
                                 <div>
                                     <h2>{track.name}</h2>
                                     <p>{track.artists[0].name}</p>
-                                    <ReactAudioPlayer src={track.preview_url} controls />
+                                    <ReactAudioPlayer
+                                        style={{ width: '240px' }}
+                                        src={track.preview_url}
+                                        controls
+                                    />
                                 </div>
                             </div>
                         </div>

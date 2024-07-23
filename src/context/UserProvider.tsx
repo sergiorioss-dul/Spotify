@@ -10,6 +10,7 @@ const INITIAL_STATE = {
     password: '',
     email: '',
     favTracks: JSON.parse(localStorage.getItem('favTracks') ?? '[]'),
+    isPremium: false,
 }
 
 interface props {
@@ -17,10 +18,10 @@ interface props {
 }
 
 export const UserProvider = ({ children }: props) => {
-    const [tracks, setUseTracks] = useState<Tracks | void>()
     const [userState, dispatch] = useReducer(userReducer, INITIAL_STATE)
+    const [tracks, setUseTracks] = useState<Tracks | void>()
+    const [selected, setSelected] = useState<boolean>(false)
     const [listTracks, setListTrack] = useState(tracks)
-    const [selected, setSelected] = useState(false)
 
     useEffect(() => {
         reloadToken()
@@ -37,6 +38,13 @@ export const UserProvider = ({ children }: props) => {
         dispatch({
             payload: id,
             type: 'removeTrack',
+        })
+    }
+
+    const changeProgramUser = (isPremium: boolean) => {
+        dispatch({
+            payload: isPremium,
+            type: 'changePremiumUser',
         })
     }
 
@@ -81,6 +89,7 @@ export const UserProvider = ({ children }: props) => {
                 setUseTracks,
                 tracks,
                 selected,
+                changeProgramUser,
             }}
         >
             {children}

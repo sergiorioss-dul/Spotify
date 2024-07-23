@@ -3,6 +3,7 @@ import { ImageAccordion } from '../components/ImageAccordion/ImageAccordion'
 import Layout from '../components/Layout/Layout'
 import { ScaleLoader } from 'react-spinners'
 import { useUser } from '../hooks/useUser'
+import 'react-toastify/dist/ReactToastify.css'
 
 const Home = () => {
     const [loading, setLoading] = useState<boolean>(true)
