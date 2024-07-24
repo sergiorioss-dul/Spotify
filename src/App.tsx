@@ -7,6 +7,7 @@ import Search from './pages/Search'
 import { UserProvider } from './context/UserProvider'
 import { useEffect } from 'react'
 import { createToken, reloadToken } from './hooks/useApi'
+import Plans from './pages/Plans'
 
 function App() {
     useEffect(() => {
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/support" element={<Support />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/search" element={<Search />} />
+                <Route path="/plans" element={<Plans />} />
             </Routes>
         </UserProvider>
     )

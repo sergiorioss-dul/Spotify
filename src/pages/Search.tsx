@@ -1,8 +1,9 @@
 import Layout from '../components/Layout/Layout'
 import { useUser } from '../hooks/useUser'
 import List from '../components/List/List'
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import { Item } from './models'
+import { notify } from '../utils'
 
 interface IEvent {
     keyCode: string | number
@@ -22,22 +23,9 @@ const Search = () => {
         }
     }
 
-    const notify = () =>
-        toast.error('⚠️ Please update your membership!', {
-            position: 'top-right',
-            type: 'error',
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'colored',
-        })
-
     const toogleFav = (track: Item) => {
         if (userState.favTracks && userState.favTracks?.length > 8) {
-            notify()
+            notify('⚠️ Please update your membership!', 'error')
         } else {
             _toggleFav(track)
         }

@@ -21,6 +21,11 @@ const Sidebar = () => {
             text: 'Search',
         },
         {
+            path: '/plans',
+            _class: 'ai-coin',
+            text: 'Plans',
+        },
+        {
             path: '/support',
             _class: 'ai-envelope',
             text: 'Support',
