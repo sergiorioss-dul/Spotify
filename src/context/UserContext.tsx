@@ -12,6 +12,7 @@ export interface UserContextProps {
     tracks?: Tracks | void
     selected: boolean
     changeProgramUser: (isPremium: boolean) => void
+    handlerLogin: (user: IUser) => void
 }
 
 export const UserContext = createContext<UserContextProps>({} as UserContextProps)

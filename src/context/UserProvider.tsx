@@ -4,14 +4,30 @@ import { UserContext } from './UserContext'
 import apiMusic from '../config/apiMusic'
 import { IMusic, Item, Tracks } from '../pages/models'
 import { reloadToken } from '../hooks/useApi'
+import { IUser } from './models'
+import { notify } from '../utils'
+import bcrypt from 'bcryptjs'
+import { useNavigate } from 'react-router-dom'
+
+const localUser = localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user') ?? '')
+    : null
 
 const INITIAL_STATE = {
-    name: '',
-    password: '',
-    email: '',
+    name: localUser ? localUser.name : '',
+    password: localUser ? localUser.password : '',
+    email: localUser ? localUser.email : '',
     favTracks: JSON.parse(localStorage.getItem('favTracks') ?? '[]'),
     isPremium: false,
 }
+
+const FAKE_DB: IUser[] = [
+    {
+        name: 'Testing',
+        password: '$2a$10$CwTycUXWue0Thq9StjUM0uuu.eenRVFBCuKHpl3KSYOHe5osN7amm',
+        email: 'testing@gmail.com',
+    },
+]
 
 interface props {
     children: JSX.Element | JSX.Element[]
@@ -22,6 +38,7 @@ export const UserProvider = ({ children }: props) => {
     const [tracks, setUseTracks] = useState<Tracks | void>()
     const [selected, setSelected] = useState<boolean>(false)
     const [listTracks, setListTrack] = useState(tracks)
+    const navigate = useNavigate()
 
     useEffect(() => {
         reloadToken()
@@ -78,17 +95,35 @@ export const UserProvider = ({ children }: props) => {
         }
     }
 
+    const handlerLogin = (user: IUser) => {
+        const findUser = FAKE_DB.find((u) => user.email === u.email)
+        if (findUser) {
+            if (bcrypt.compareSync(user.password, findUser.password)) {
+                notify(`Welcome ${findUser.name}`, 'success')
+                localStorage.setItem('user', JSON.stringify(findUser))
+                setTimeout(() => {
+                    navigate('/')
+                }, 1900)
+            } else {
+                notify('⚠️ Anauthorized 401', 'error')
+            }
+        } else {
+            notify('⚠️ Not Found', 'error')
+        }
+    }
+
     return (
         <UserContext.Provider
             value={{
-                userState,
-                searchSong,
-                addTrack,
-                removeTrack,
-                _toggleFav,
-                setUseTracks,
                 tracks,
                 selected,
+                addTrack,
+                userState,
+                searchSong,
+                _toggleFav,
+                removeTrack,
+                setUseTracks,
+                handlerLogin,
                 changeProgramUser,
             }}
         >

@@ -18,7 +18,6 @@ const SupportForm = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault()
-        console.log(formData)
         setFormData({ name: '', email: '', subject: '', message: '' })
         notify('Your mail was sent!', 'success')
     }

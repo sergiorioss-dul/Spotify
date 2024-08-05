@@ -2,8 +2,10 @@ import './styles.css'
 import { Link } from 'react-router-dom'
 import Menu from '../Nav/Menu'
 import { INav } from '../Nav/models'
+import { useUser } from '../../hooks/useUser'
 
 const Sidebar = () => {
+    const { userState } = useUser()
     const navGuest: INav[] = [
         {
             path: '/',
@@ -31,15 +33,16 @@ const Sidebar = () => {
             text: 'Support',
         },
     ]
+
     return (
         <aside className="sidebar">
             <div className="header">
                 <Link to="/">
                     <img className="imgHeader" src="./src/assets/spotify.png" />
                 </Link>
-                <h1>Welcome to myMusic</h1>
+                {userState.email ? <h1>Hi {userState.name}!</h1> : <h1>Welcome to myMusic</h1>}
             </div>
-            <Menu navLogin={navGuest} />
+            <Menu navLogin={navGuest} isLogin={userState.email ? true : false} />
         </aside>
     )
 }

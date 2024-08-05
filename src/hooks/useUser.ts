@@ -3,23 +3,25 @@ import { UserContext, UserContextProps } from '../context/UserContext'
 
 export const useUser = () => {
     const {
-        searchSong,
-        addTrack,
-        removeTrack,
-        userState,
-        _toggleFav,
-        setUseTracks,
         tracks,
         selected,
+        addTrack,
+        userState,
+        _toggleFav,
+        searchSong,
+        removeTrack,
+        handlerLogin,
+        setUseTracks,
     } = useContext<UserContextProps>(UserContext)
     return {
         tracks,
         addTrack,
+        selected,
         userState,
         searchSong,
-        removeTrack,
         _toggleFav,
+        removeTrack,
         setUseTracks,
-        selected,
+        handlerLogin,
     }
 }

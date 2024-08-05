@@ -5,6 +5,7 @@ type UserAction =
     | { type: 'addTrack'; payload: Item }
     | { type: 'removeTrack'; payload: string }
     | { type: 'changePremiumUser'; payload: boolean }
+    | { type: 'logUser'; payload: IUser }
 
 export const userReducer = (state: IUser, action: UserAction): IUser => {
     switch (action.type) {
@@ -20,6 +21,8 @@ export const userReducer = (state: IUser, action: UserAction): IUser => {
         }
         case 'changePremiumUser':
             state.isPremium = action.payload
+            return state
+        case 'logUser':
             return state
         default:
             return state

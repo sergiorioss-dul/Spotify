@@ -1,5 +1,6 @@
 interface IMenu {
     navLogin: INav[]
+    isLogin: boolean
     setLoggin?: (value: boolean | ((prevVar: boolean) => boolean)) => void
 }
 
