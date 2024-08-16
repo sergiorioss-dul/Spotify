@@ -6,8 +6,8 @@ export const createToken = async () => {
         method: 'POST',
         data: {
             grant_type: 'client_credentials',
-            client_id: import.meta.env.CLIENT_ID,
-            client_secret: import.meta.env.CLIENT_SECRET,
+            client_id: import.meta.env.VITE_SOME_KEY,
+            client_secret: import.meta.env.DB_PASSWORD,
         },
     })
         .then(({ data: { access_token } }) => {

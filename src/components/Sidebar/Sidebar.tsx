@@ -40,7 +40,7 @@ const Sidebar = () => {
                 <Link to="/">
                     <img className="imgHeader" src="./src/assets/spotify.png" />
                 </Link>
-                {userState.email ? <h1>Hi {userState.name}!</h1> : <h1>Welcome to myMusic</h1>}
+                {userState.email ? <h1> Hi {userState.name}!</h1> : <h1>Welcome to myMusic</h1>}
             </div>
             <Menu navLogin={navGuest} isLogin={userState.email ? true : false} />
         </aside>

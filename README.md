@@ -1,7 +1,8 @@
-# Client Email & Password
+# Client User,Email & Password
 
+testing
 testing@gmail.com
-testing123$
+testing123
 
 # React + TypeScript + Vite
 
