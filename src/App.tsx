@@ -11,7 +11,6 @@ import Plans from './pages/Plans'
 
 function App() {
     useEffect(() => {
-        console.log('ENV ->', import.meta.env.VITE_SOME_KEY)
         const token = localStorage.getItem('accessToken')
         if (!token) {
             createToken()
